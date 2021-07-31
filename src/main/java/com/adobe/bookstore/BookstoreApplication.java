@@ -26,7 +26,7 @@ public class BookstoreApplication {
 	CommandLineRunner runner(ProductService productService) {
 		return args -> {
 			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<Product>> typeReference = new TypeReference<>() {
+			TypeReference<List<Product>> typeReference = new TypeReference<List<Product>>() {
 			};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/stock.json");
 			try {

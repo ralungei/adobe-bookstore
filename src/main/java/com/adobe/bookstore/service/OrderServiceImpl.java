@@ -19,13 +19,11 @@ import java.util.Objects;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository;
-
-    private OrderProductService orderProductService;
-    private ProductService productService;
-    private AsyncService asyncService;
-
-
+    final private OrderRepository orderRepository;
+    final private OrderProductService orderProductService;
+    final private ProductService productService;
+    final private AsyncService asyncService;
+    
     public OrderServiceImpl(OrderRepository orderRepository, ProductService productService, OrderProductService orderProductService, @Lazy AsyncService asyncService) {
         this.orderRepository = orderRepository;
         this.productService = productService;
@@ -60,7 +58,6 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setStatus(OrderStatus.PENDING.name());
         order = this.create(order);
-
 
         List<OrderProduct> orderProducts = new ArrayList<>();
         for (int i = 0; i < productsDtos.size(); i++)
